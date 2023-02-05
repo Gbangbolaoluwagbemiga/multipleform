@@ -1,0 +1,88 @@
+body {
+  margin: auto;
+  padding: 0;
+}
+/* .attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+} */
+i {
+  cursor: pointer;
+  color: white;
+  padding: 0 20px;
+}
+.opts {
+  padding: 10px 0;
+}
+.select--options {
+  height: 31rem;
+  /* background-image: url(/multi-step-form-main/assets/images/bg-sidebar-desktop.svg); */
+  background-image: url(/assets/images/bg-sidebar-desktop.svg);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  background-size: contain;
+}
+/* General */
+.hidden {
+  display: none;
+}
+.split {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* section 1 */
+.form--input {
+  display: block;
+  position: relative;
+  bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  position: relative;
+  left: 55%;
+}
+/* section 2 */
+.option--plan {
+  padding: 20px 10px;
+  /* margin: 10px 3px; */
+  height: 10rem;
+  width: 30%;
+  border: 2px solid white;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.option--basis {
+  display: flex;
+  justify-content: center;
+}
+
+/* section 3 */
+.words {
+  position: relative;
+  bottom: 5px;
+}
+.add-ons__design {
+  padding: 15px;
+  margin: 10px 15px;
+  border: 3px solid white;
+}
+
+@media screen and (max-width: 700px) {
+  .select--options {
+    height: 21rem;
+
+    background-image: url(/assets/images/bg-sidebar-desktop.svg);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    background-size: contain;
+  }
+}

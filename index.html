@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <!-- Bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- font awesome link -->
+    <script
+      src="https://kit.fontawesome.com/45758e0c8b.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- External js and css file -->
+    <link rel="stylesheet" href="/style.css" />
+    <script defer src="/script.js "></script>
+
+    <title>Frontend Mentor | Multi-step form</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar start -->
+      <div class="row my-5">
+        <div class="col-md-3 select--options">
+          <p class="opts">
+            <input type="radio" name="js" class="toggler" value="1" />
+            <span>Step 1 </span> Your info
+          </p>
+          <p class="opts">
+            <input type="radio" name="js" class="toggler" value="2" />
+            <span class="">Step 2</span> Select plan
+          </p>
+          <p class="opts">
+            <input type="radio" name="js" class="toggler" value="3" />
+            <span> Step 3 </span>Add-ons
+          </p>
+          <p class="opts">
+            <input type="radio" name="js" class="toggler" value="4" />
+            <span>Step 4</span> Summary
+          </p>
+        </div>
+        <!-- Sidebar end -->
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+          <!-- Step 1 start -->
+          <div class="form radio" data-num="1">
+            <p class="h1">Personal info</p>
+            <p class="mb-4">
+              Please provide your name, email address, and phone number.
+            </p>
+            <form class="work--pls">
+              <!-- name and input field -->
+              <label for="name">Name</label>
+              <input
+                type="text"
+                placeholder="Elijah philip"
+                class="form--input"
+                required
+              />
+
+              <!-- email and its field -->
+              <label for="email">Email</label>
+              <input
+                type="email"
+                placeholder="elijahphilip@gmail.com"
+                class="form--input"
+                required
+              />
+
+              <!-- phone number and its field -->
+              <label for="number">Phone Number</label>
+              <input
+                type="number"
+                placeholder="+2348167002821"
+                class="form--input"
+                required
+              />
+
+              <!-- Button -->
+              <button class="btn btn--nxt h6 p-2" data-nxt="1">
+                Next Step
+              </button>
+            </form>
+          </div>
+          <!-- Step 1 end -->
+
+          <!-- Step 2 start -->
+          <div class="plan radio" data-num="2">
+            <p class="h1 mb-4">Select your plan</p>
+            <p>You have the option of monthly or yearly billing.</p>
+            <div class="row my-4">
+              <div class="col-sm-3 option--plan mr-2">Arcade $9/mo</div>
+              <div class="col-sm-3 option--plan mr-2">Advanced $12/mo</div>
+              <div class="col-sm-3 option--plan">Pro $15/mo</div>
+            </div>
+            <div class="option--basis">
+              <p>Monthly</p>
+              <p>Yearly</p>
+            </div>
+            <div class="btns">
+              <button class="prev btn--prev" data-prev="2">Go Back</button>
+              <button class="next btn--nxt" data-nxt="2">Next Step</button>
+            </div>
+          </div>
+          <!-- Step 2 end -->
+
+          <!-- Step 3 start -->
+          <!-- Adds on -->
+          <div class="adds--on radio" data-num="3">
+            <p class="h1">Pick add-ons</p>
+            <p>Add-ons help enhance your gaming experience.</p>
+
+            <div class="row add-ons__design">
+              <div class="col-1 ml-5">
+                <input type="checkbox" />
+              </div>
+
+              <div class="col-5 mr-1">
+                <p class="h6">Online service</p>
+                <span class="words"> Access to multiplayer games</span>
+              </div>
+
+              <div class="col-3">+$1/mo</div>
+            </div>
+
+            <div class="row add-ons__design">
+              <div class="col-1 ml-5">
+                <input type="checkbox" />
+              </div>
+
+              <div class="col-5 mr-1">
+                <p class="h6">Larger storage</p>
+                <span class="words"> Extra 1TB of cloud save</span>
+              </div>
+
+              <div class="col-3">+$2/mo</div>
+            </div>
+
+            <div class="row add-ons__design">
+              <div class="col-1 ml-5">
+                <input type="checkbox" />
+              </div>
+
+              <div class="col-5 mr-1">
+                <p class="h6">Customizable Profile</p>
+                <span class="words"> Custom theme on your profile</span>
+              </div>
+
+              <div class="col-3">+$2/mo</div>
+            </div>
+
+            <div class="btns">
+              <button class="prev btn--prev" data-prev="3">Go Back</button>
+              <button class="next btn--nxt" data-nxt="3">Next Step</button>
+            </div>
+          </div>
+          <!-- Step 3 end -->
+
+          <!-- Step 4 start -->
+          <div class="summary radio" data-num="4">
+            <p class="h1">Finishing up</p>
+            <p>Double-check everything looks OK before confirming.</p>
+
+            <!-- Dynamically add subscription and add-on selections here -->
+            <div class="price--change split">
+              <p class="selection--plan">
+                Arcade(monthly) <br />
+                <a href="#">change</a>
+              </p>
+
+              <p class="price--tag">$9/mo</p>
+            </div>
+            <!-- Review of adds ons -->
+            <div class="adds--on__change">
+              <div class="service split">
+                <p>Online service</p>
+                <p>+$1/mo</p>
+              </div>
+
+              <div class="storage split">
+                <p>larger storage</p>
+                <p>+$2/mo</p>
+              </div>
+
+              <div class="profile split">
+                <p>customizable profile</p>
+                <p>+$2/mo</p>
+              </div>
+
+              <div class="summation split">
+                <p>Total (per month/year)</p>
+                <p>+12/mo</p>
+              </div>
+
+              <div class="btns">
+                <button class="prev btn--prev" data-prev="4">Go Back</button>
+                <button class="confirm">confirm</button>
+              </div>
+            </div>
+
+            <!-- Step 4 end -->
+          </div>
+          <!-- Step 5 start -->
+          <div class="appreciation hidden">
+            <p class="my-5"></p>
+            <p class="h1">Thank you!</p>
+            <p class="text">
+              Thanks for confirming your subscription! We hope you have fun
+              using our platform. If you ever need support, please feel free to
+              email us at support@loremgaming.com.
+            </p>
+          </div>
+
+          <!-- Step 5 end -->
+        </div>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="#" class="user__profile">Gbangbola oluwagbemiga philip</a>.
+    </div>
+  </body>
+</html>
