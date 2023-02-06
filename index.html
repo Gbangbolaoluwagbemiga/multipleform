@@ -34,10 +34,10 @@
   <body>
     <div class="container">
       <!-- Sidebar start -->
-      <div class="row my-5">
+      <div class="row content my-5">
         <div class="col-md-3 select--options">
           <p class="opts">
-            <input type="radio" name="js" class="toggler" value="1" />
+            <input type="radio" name="js" class="toggler" value="1" checked />
             <span>Step 1 </span> Your info
           </p>
           <p class="opts">
@@ -58,8 +58,8 @@
         <div class="col-md-8">
           <!-- Step 1 start -->
           <div class="form radio" data-num="1">
-            <p class="h1">Personal info</p>
-            <p class="mb-4">
+            <p class="h2">Personal info</p>
+            <p class="mb-4 sub--text">
               Please provide your name, email address, and phone number.
             </p>
             <form class="work--pls">
@@ -91,25 +91,62 @@
               />
 
               <!-- Button -->
-              <button class="btn btn--nxt h6 p-2" data-nxt="1">
-                Next Step
-              </button>
+              <button class="btn btn--nxt h6" data-nxt="1">Next Step</button>
             </form>
           </div>
           <!-- Step 1 end -->
 
           <!-- Step 2 start -->
           <div class="plan radio" data-num="2">
-            <p class="h1 mb-4">Select your plan</p>
-            <p>You have the option of monthly or yearly billing.</p>
+            <p class="h2 mb-4">Select your plan</p>
+            <p class="sub--text">
+              You have the option of monthly or yearly billing.
+            </p>
             <div class="row my-4">
-              <div class="col-sm-3 option--plan mr-2">Arcade $9/mo</div>
-              <div class="col-sm-3 option--plan mr-2">Advanced $12/mo</div>
-              <div class="col-sm-3 option--plan">Pro $15/mo</div>
+              <div class="col-sm-3 option--plan mr-2">
+                <img
+                  src="/assets/images/icon-arcade.svg"
+                  alt="Arcade"
+                  class="img--plan"
+                />
+                <p>
+                  <strong class="bold--text">Arcade</strong> <br />
+                  <span class="light--text">$9/mo</span>
+                </p>
+              </div>
+              <div class="col-sm-3 option--plan mr-2">
+                <img
+                  src="/assets/images/icon-advanced.svg"
+                  alt="Advanced"
+                  class="img--plan"
+                />
+                <p>
+                  <strong class="bold--text">Advanced</strong> <br />
+                  <span class="light--text">$12/mo</span>
+                </p>
+              </div>
+              <div class="col-sm-3 option--plan">
+                <img
+                  src="/assets/images/icon-pro.svg"
+                  alt="pro"
+                  class="img--plan"
+                />
+                <p>
+                  <strong class="bold--text">Pro</strong> <br />
+                  <span class="light--text">$15/mo</span>
+                </p>
+              </div>
             </div>
             <div class="option--basis">
-              <p>Monthly</p>
-              <p>Yearly</p>
+              <p class="no--pg">
+                Monthly
+                <span class="switch">
+                  <i class="fa-solid fa-toggle-on hidden"></i>
+                  <i class="fa-solid fa-toggle-off"></i>
+                </span>
+
+                Yearly
+              </p>
             </div>
             <div class="btns">
               <button class="prev btn--prev" data-prev="2">Go Back</button>
@@ -121,7 +158,7 @@
           <!-- Step 3 start -->
           <!-- Adds on -->
           <div class="adds--on radio" data-num="3">
-            <p class="h1">Pick add-ons</p>
+            <p class="h2">Pick add-ons</p>
             <p>Add-ons help enhance your gaming experience.</p>
 
             <div class="row add-ons__design">
@@ -129,7 +166,7 @@
                 <input type="checkbox" />
               </div>
 
-              <div class="col-5 mr-1">
+              <div class="col-6 mr-1">
                 <p class="h6">Online service</p>
                 <span class="words"> Access to multiplayer games</span>
               </div>
@@ -142,7 +179,7 @@
                 <input type="checkbox" />
               </div>
 
-              <div class="col-5 mr-1">
+              <div class="col-6 mr-1">
                 <p class="h6">Larger storage</p>
                 <span class="words"> Extra 1TB of cloud save</span>
               </div>
@@ -155,7 +192,7 @@
                 <input type="checkbox" />
               </div>
 
-              <div class="col-5 mr-1">
+              <div class="col-6 mr-1">
                 <p class="h6">Customizable Profile</p>
                 <span class="words"> Custom theme on your profile</span>
               </div>
@@ -172,7 +209,7 @@
 
           <!-- Step 4 start -->
           <div class="summary radio" data-num="4">
-            <p class="h1">Finishing up</p>
+            <p class="h2">Finishing up</p>
             <p>Double-check everything looks OK before confirming.</p>
 
             <!-- Dynamically add subscription and add-on selections here -->
@@ -217,7 +254,7 @@
           <!-- Step 5 start -->
           <div class="appreciation hidden">
             <p class="my-5"></p>
-            <p class="h1">Thank you!</p>
+            <p class="h2">Thank you!</p>
             <p class="text">
               Thanks for confirming your subscription! We hope you have fun
               using our platform. If you ever need support, please feel free to

@@ -1,28 +1,43 @@
-body {
-  margin: auto;
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+/* Global variables */
+:root {
+  --input-nonselect: hsl(206, 94%, 87%);
+  --input-select: hsl(354, 84%, 57%);
+  --text-color: hsl(228, 100%, 84%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --btn-bg: hsl(213, 96%, 18%);
+  --White-bg: hsl(0, 0%, 100%);
+  --Alabaster: hsl(231, 100%, 99%);
+}
+
+/* General body styling */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 13px;
 }
-/* .attribution {
-  font-size: 11px;
-  text-align: center;
+
+body {
+  background-color: var(--text-color);
 }
-.attribution a {
-  color: hsl(228, 45%, 44%);
-} */
-i {
+/* General body */
+.content {
+  margin: auto;
+  padding: 20px;
+  background-color: var(--Alabaster);
   cursor: pointer;
-  color: white;
-  padding: 0 20px;
 }
 .opts {
   padding: 10px 0;
 }
 .select--options {
-  height: 31rem;
-  /* background-image: url(/multi-step-form-main/assets/images/bg-sidebar-desktop.svg); */
+  height: 22.5rem;
   background-image: url(/assets/images/bg-sidebar-desktop.svg);
   background-repeat: no-repeat;
-  /* background-size: cover; */
   background-size: contain;
 }
 /* General */
@@ -34,35 +49,79 @@ i {
   justify-content: space-around;
 }
 
+/* common classes */
+.btn--nxt,
+.btn--prev,
+.confirm {
+  background-color: var(--btn-bg);
+  padding: 2px 5px;
+  color: var(--White-bg);
+  border-radius: 5px;
+  outline: none;
+}
+
 /* section 1 */
 .form--input {
   display: block;
   position: relative;
   bottom: 5px;
-  margin-bottom: 10px;
+  padding: 3px;
+  margin-bottom: 8px;
+  width: 75%;
+  border-radius: 8px;
+  border: 2px solid hsl(206, 94%, 87%);
+  transition: 0.5s;
+  outline: none;
+}
+
+.form--input:focus {
+  width: 80%;
+  border: 2px solid hsl(354, 84%, 57%);
+}
+
+.form--input::placeholder {
+  padding: 10px;
 }
 
 .btn {
   position: relative;
-  left: 55%;
+  margin: 10px;
+  left: 80%;
 }
 /* section 2 */
 .option--plan {
-  padding: 20px 10px;
-  /* margin: 10px 3px; */
-  height: 10rem;
+  padding: 10px;
+  /* height: 7rem; */
   width: 30%;
-  border: 2px solid white;
+  border: 1px solid var(--input-nonselect);
+  border-radius: 7px;
 }
-
+.img--plan {
+  display: block;
+  width: 30%;
+  margin-bottom: 20px;
+}
 .btns {
   display: flex;
   justify-content: space-between;
 }
+.bold--text {
+  font-size: 14px;
+  font-weight: 800px;
+}
+.light--text {
+  font-size: 11px;
+}
+i {
+  color: var(--btn-bg);
+  /* padding: 0 20px; */
+}
 
-.option--basis {
-  display: flex;
-  justify-content: center;
+.no--pg {
+  position: relative;
+  left: 30%;
+  display: inline;
+  margin: auto;
 }
 
 /* section 3 */
@@ -72,17 +131,16 @@ i {
 }
 .add-ons__design {
   padding: 15px;
-  margin: 10px 15px;
+  margin: 8px;
   border: 3px solid white;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) {
   .select--options {
-    height: 21rem;
-
+    height: 45rem;
     background-image: url(/assets/images/bg-sidebar-desktop.svg);
     background-repeat: no-repeat;
-    /* background-size: cover; */
+    background-size: cover;
     background-size: contain;
   }
 }
