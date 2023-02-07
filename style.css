@@ -10,6 +10,9 @@
   --btn-bg: hsl(213, 96%, 18%);
   --White-bg: hsl(0, 0%, 100%);
   --Alabaster: hsl(231, 100%, 99%);
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
 }
 
 /* General body styling */
@@ -25,9 +28,10 @@ body {
   background-color: var(--text-color);
 }
 /* General body */
-.content {
-  margin: auto;
-  padding: 20px;
+.contents {
+  /* margin: auto; */
+  padding: 30px;
+  padding-bottom: 0;
   background-color: var(--Alabaster);
   cursor: pointer;
 }
@@ -35,10 +39,11 @@ body {
   padding: 10px 0;
 }
 .select--options {
-  height: 22.5rem;
+  color: var(--White-bg);
   background-image: url(/assets/images/bg-sidebar-desktop.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 5px;
 }
 /* General */
 .hidden {
@@ -58,6 +63,17 @@ body {
   color: var(--White-bg);
   border-radius: 5px;
   outline: none;
+}
+
+/* left hand side */
+.ls--view {
+  display: block;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.ls--word {
+  margin-left: 6px;
 }
 
 /* section 1 */
@@ -113,6 +129,7 @@ body {
   font-size: 11px;
 }
 i {
+  font-size: 18px;
   color: var(--btn-bg);
   /* padding: 0 20px; */
 }
@@ -122,6 +139,18 @@ i {
   left: 30%;
   display: inline;
   margin: auto;
+}
+.option--basis {
+  position: relative;
+  left: 0;
+  background-color: var(--Light-gray);
+  padding: 2px 5px;
+  margin: 15px 0;
+  width: 80%;
+}
+.active--sec2 {
+  background-color: var(--text-color);
+  border: 2px solid var(--Purplish-blue);
 }
 
 /* section 3 */

@@ -1,17 +1,22 @@
 'use strict';
 
 // Event listeners
-const toggleRadio = document.querySelectorAll('.toggler');
+// without loop
 const form = document.querySelector('.form');
-const radio = document.querySelectorAll('.radio');
-const btnNxt = document.querySelectorAll('.btn--nxt');
-const btnPrev = document.querySelectorAll('.btn--prev');
-const formInput = document.querySelectorAll('.form--input');
 const switcher = document.querySelector('.switch');
 const btnConfirm = document.querySelector('.confirm');
 const appreciation = document.querySelector('.appreciation');
 const toggOff = document.querySelector('.fa-toggle-off');
 const toggOn = document.querySelector('.fa-toggle-on');
+const planContainer = document.querySelector('.plan--container');
+
+// involves looping
+const toggleRadio = document.querySelectorAll('.toggler');
+const radio = document.querySelectorAll('.radio');
+const btnNxt = document.querySelectorAll('.btn--nxt');
+const btnPrev = document.querySelectorAll('.btn--prev');
+const formInput = document.querySelectorAll('.form--input');
+const optionPlan = document.querySelectorAll('.option--plan');
 
 // Helper functions
 
@@ -101,3 +106,18 @@ btnConfirm.addEventListener('click', function () {
   addClasses();
   toggleRadio.forEach(movs => movs.removeEventListener('click', toggler));
 });
+
+// section 2 responsiveness
+function optPlan(e) {
+  const link = e.target.closest('.option--plan');
+  console.log(link);
+  // Guard clause
+  if (!link) return;
+
+  // Remove active classes
+  optionPlan.forEach(t => t.classList.remove('active--sec2'));
+
+  // Activate tab
+  link.classList.add('active--sec2');
+}
+planContainer.addEventListener('click', optPlan);

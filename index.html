@@ -34,28 +34,41 @@
   <body>
     <div class="container">
       <!-- Sidebar start -->
-      <div class="row content my-5">
+      <div class="row contents my-5">
         <div class="col-md-3 select--options">
           <p class="opts">
-            <input type="radio" name="js" class="toggler" value="1" checked />
-            <span>Step 1 </span> Your info
+            <input type="radio" name="js" class="toggler" value="1" />
+            <span class="ls--word">
+              STEP 1
+              <span class="ls--view">YOUR INFO </span>
+            </span>
           </p>
           <p class="opts">
             <input type="radio" name="js" class="toggler" value="2" />
-            <span class="">Step 2</span> Select plan
+            <span class="ls--word">
+              STEP 2
+              <span class="ls--view">SELECT PLAN</span>
+            </span>
           </p>
           <p class="opts">
             <input type="radio" name="js" class="toggler" value="3" />
-            <span> Step 3 </span>Add-ons
+            <span class="ls--word">
+              STEP 3
+              <span class="ls--view"> ADD-ONS </span>
+            </span>
           </p>
           <p class="opts">
             <input type="radio" name="js" class="toggler" value="4" />
-            <span>Step 4</span> Summary
+            <span class="ls--word">
+              STEP 4
+              <span class="ls--view">SUMMARY</span>
+            </span>
           </p>
         </div>
         <!-- Sidebar end -->
+
         <div class="col-md-1"></div>
-        <div class="col-md-8">
+        <div class="col-md-8 my-4">
           <!-- Step 1 start -->
           <div class="form radio" data-num="1">
             <p class="h2">Personal info</p>
@@ -98,11 +111,11 @@
 
           <!-- Step 2 start -->
           <div class="plan radio" data-num="2">
-            <p class="h2 mb-4">Select your plan</p>
+            <p class="h2">Select your plan</p>
             <p class="sub--text">
               You have the option of monthly or yearly billing.
             </p>
-            <div class="row my-4">
+            <div class="row plan--container my-4">
               <div class="col-sm-3 option--plan mr-2">
                 <img
                   src="/assets/images/icon-arcade.svg"
@@ -161,9 +174,10 @@
             <p class="h2">Pick add-ons</p>
             <p>Add-ons help enhance your gaming experience.</p>
 
-            <div class="row add-ons__design">
+            <div class="row add-ons__design ads">
               <div class="col-1 ml-5">
                 <input type="checkbox" />
+                <span class="checkmark"></span>
               </div>
 
               <div class="col-6 mr-1">
@@ -174,9 +188,10 @@
               <div class="col-3">+$1/mo</div>
             </div>
 
-            <div class="row add-ons__design">
+            <div class="row add-ons__design ads">
               <div class="col-1 ml-5">
                 <input type="checkbox" />
+                <span class="checkmark"></span>
               </div>
 
               <div class="col-6 mr-1">
@@ -187,9 +202,10 @@
               <div class="col-3">+$2/mo</div>
             </div>
 
-            <div class="row add-ons__design">
+            <div class="row add-ons__design ads">
               <div class="col-1 ml-5">
                 <input type="checkbox" />
+                <span class="checkmark"></span>
               </div>
 
               <div class="col-6 mr-1">
