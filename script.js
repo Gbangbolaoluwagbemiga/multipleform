@@ -32,18 +32,33 @@ const defaultDisplay = function () {
 };
 defaultDisplay();
 
+// Help moves the radio button to the active page
+
+function checkedRad(numrad) {
+  toggleRadio.forEach(tr => {
+    const check = numrad;
+    const val = +tr.value;
+    if (val === check) {
+      // console.log('val');
+      tr.checked = true;
+    }
+  });
+}
+
 // Next btn functionality
 const nxt = function (e) {
   // e.preventDefault();
   // if (btnNO === 1 && formInput.forEach(inp => inp.value === '')) {
-  //   console.log('hi');
+  console.log('hi');
   // }
   const btnNO = +e.target.dataset.nxt;
   radio.forEach(number => {
     const value = +number.dataset.num;
     if (btnNO >= curSlide) {
       if (value === btnNO + 1) {
+        // console.log(number.dataset.num);
         number.classList.remove('hidden');
+        checkedRad(value);
       } else {
         number.classList.add('hidden');
       }
@@ -60,7 +75,9 @@ const prev = function (e) {
     const value = +number.dataset.num;
     if (btnNO >= curSlide) {
       if (value + 1 === btnNO) {
+        // console.log(btnNO);
         number.classList.remove('hidden');
+        checkedRad(btnNO - 1);
       } else {
         number.classList.add('hidden');
       }
@@ -72,6 +89,7 @@ const prev = function (e) {
 const toggler = function (e) {
   addClasses();
   const individual = e.target.value;
+  // console.log(e.target.checked);
   radio.forEach(number => {
     const value = number.dataset.num;
     if (individual === value) {
@@ -110,7 +128,7 @@ btnConfirm.addEventListener('click', function () {
 // section 2 responsiveness
 function optPlan(e) {
   const link = e.target.closest('.option--plan');
-  console.log(link);
+  // console.log(link);
   // Guard clause
   if (!link) return;
 
