@@ -147,6 +147,7 @@ i {
   padding: 2px 5px;
   margin: 15px 0;
   width: 80%;
+  border-radius: 4px;
 }
 .active--sec2 {
   background-color: var(--text-color);
@@ -155,11 +156,13 @@ i {
 
 /* section 3 */
 .words {
-  position: relative;
-  bottom: 5px;
+  /* position: relative;
+  bottom: 5px; */
+  display: block;
+  font-size: 13px;
 }
 .add-ons__design {
-  padding: 15px;
+  padding: 10px;
   margin: 8px;
   border: 3px solid white;
 }
@@ -171,5 +174,11 @@ i {
     background-repeat: no-repeat;
     background-size: cover;
     background-size: contain;
+  }
+
+  .option--basis {
+    padding: 5px 3px;
+    padding-left: 0;
+    width: 95%;
   }
 }

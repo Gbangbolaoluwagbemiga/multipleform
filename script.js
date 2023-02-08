@@ -18,6 +18,11 @@ const btnPrev = document.querySelectorAll('.btn--prev');
 const formInput = document.querySelectorAll('.form--input');
 const optionPlan = document.querySelectorAll('.option--plan');
 
+// General variable
+let done = false;
+let clicked = true;
+
+///
 // Helper functions
 
 // Add hidden classlist
@@ -99,7 +104,7 @@ const toggler = function (e) {
 };
 // End of helper functions
 // The switch toggler
-let clicked = true;
+
 switcher.addEventListener('click', function () {
   if (clicked) {
     toggOff.classList.add('hidden');
@@ -123,6 +128,16 @@ btnConfirm.addEventListener('click', function () {
   appreciation.classList.remove('hidden');
   addClasses();
   toggleRadio.forEach(movs => movs.removeEventListener('click', toggler));
+
+  done = true;
+  // After confirm is trigged
+  if (done) {
+    toggleRadio.forEach(tr => {
+      tr.name = '';
+      tr.checked = true;
+    });
+    // toggleRadio.forEach(movs => movs.remove('click', toggler));
+  }
 });
 
 // section 2 responsiveness
