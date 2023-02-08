@@ -31,7 +31,6 @@ body {
 .contents {
   /* margin: auto; */
   padding: 30px;
-  padding-bottom: 0;
   background-color: var(--Alabaster);
   cursor: pointer;
 }
@@ -85,7 +84,7 @@ body {
   margin-bottom: 8px;
   width: 75%;
   border-radius: 8px;
-  border: 2px solid hsl(206, 94%, 87%);
+  border: 2px solid var(--input-nonselect);
   transition: 0.5s;
   outline: none;
 }
@@ -146,15 +145,21 @@ i {
   background-color: var(--Light-gray);
   padding: 2px 5px;
   margin: 15px 0;
-  width: 80%;
+  width: 75%;
   border-radius: 4px;
 }
-.active--sec2 {
+.active--sec2,
+.active--sec3 {
   background-color: var(--text-color);
   border: 2px solid var(--Purplish-blue);
 }
 
 /* section 3 */
+.checkbox,
+.price {
+  position: relative;
+  top: 15px;
+}
 .words {
   /* position: relative;
   bottom: 5px; */
@@ -164,12 +169,13 @@ i {
 .add-ons__design {
   padding: 10px;
   margin: 8px;
-  border: 3px solid white;
+  border: 3px solid var(--input-nonselect);
+  border-radius: 8px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 750px) {
   .select--options {
-    height: 45rem;
+    height: 47rem;
     background-image: url(/assets/images/bg-sidebar-desktop.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -180,5 +186,16 @@ i {
     padding: 5px 3px;
     padding-left: 0;
     width: 95%;
+  }
+
+  .form--input {
+    width: 85%;
+  }
+  .form--input:focus {
+    width: 90%;
+  }
+
+  .price {
+    right: 10px;
   }
 }

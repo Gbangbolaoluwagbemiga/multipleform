@@ -17,6 +17,8 @@ const btnNxt = document.querySelectorAll('.btn--nxt');
 const btnPrev = document.querySelectorAll('.btn--prev');
 const formInput = document.querySelectorAll('.form--input');
 const optionPlan = document.querySelectorAll('.option--plan');
+const checkBox = document.querySelectorAll('.checkbox');
+const adscontainer = document.querySelectorAll('.ads');
 
 // General variable
 let done = false;
@@ -154,3 +156,25 @@ function optPlan(e) {
   link.classList.add('active--sec2');
 }
 planContainer.addEventListener('click', optPlan);
+// section 2 ends
+
+// section 3
+checkBox.forEach(cb =>
+  cb.addEventListener('click', function (e) {
+    const link = e.target;
+    adscontainer.forEach(as => {
+      // console.log(link.value);
+      // console.log(as.dataset.cb);
+      if (link.checked) {
+        if (+link.value === +as.dataset.cb) {
+          as.classList.add('active--sec3');
+        }
+      } else {
+        console.log(link);
+        as.classList.remove('active--sec3');
+
+        // as.classList.add('active--sec3');
+      }
+    });
+  })
+);
