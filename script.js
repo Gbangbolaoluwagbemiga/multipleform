@@ -19,6 +19,7 @@ const formInput = document.querySelectorAll('.form--input');
 const optionPlan = document.querySelectorAll('.option--plan');
 const checkBox = document.querySelectorAll('.checkbox');
 const adscontainer = document.querySelectorAll('.ads');
+const secView4 = document.querySelectorAll('.view');
 
 // General variable
 let done = false;
@@ -185,12 +186,25 @@ checkBox.forEach(cb =>
       // console.log(as.dataset.cb);
       if (link.checked && +link.value === +as.dataset.cb) {
         as.classList.add('active--sec3');
-        console.log(as);
+        secView4.forEach(sect => {
+          if (
+            as.classList.contains('active--sec3') &&
+            +sect.dataset.finish === +as.dataset.cb
+          ) {
+            sect.classList.remove('hidden');
+            // console.log(as);
+          }
+        });
       } else if (!link.checked && +link.value === +as.dataset.cb) {
-        console.log(link);
         as.classList.remove('active--sec3');
-
-        // as.classList.add('active--sec3');
+        secView4.forEach(sect => {
+          if (
+            !as.classList.contains('active--sec3') &&
+            +sect.dataset.finish === +as.dataset.cb
+          ) {
+            sect.classList.add('hidden');
+          }
+        });
       }
     });
   })
