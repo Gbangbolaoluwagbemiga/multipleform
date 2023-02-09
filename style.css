@@ -197,7 +197,11 @@ i {
 }
 .appreciation,
 .img--appreciation {
+  width: auto;
   text-align: center;
+}
+.img--appreciation {
+  width: 20%;
 }
 @media screen and (max-width: 750px) {
   .select--options {
