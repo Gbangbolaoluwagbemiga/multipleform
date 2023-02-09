@@ -23,6 +23,7 @@ const adscontainer = document.querySelectorAll('.ads');
 // General variable
 let done = false;
 let clicked = true;
+let curSlide = 0; // To keep the data of the slide
 
 ///
 // Helper functions
@@ -54,14 +55,25 @@ function checkedRad(numrad) {
 
 // Next btn functionality
 const nxt = function (e) {
-  // e.preventDefault();
-  // if (btnNO === 1 && formInput.forEach(inp => inp.value === '')) {
-  console.log('hi');
-  // }
   const btnNO = +e.target.dataset.nxt;
   radio.forEach(number => {
     const value = +number.dataset.num;
-    if (btnNO >= curSlide) {
+
+    formInput.forEach(id => {
+      console.log(id);
+      if (btnNO === 1 && id.value !== '') {
+        e.preventDefault();
+        if (value === btnNO + 1) {
+          // console.log(number.dataset.num);
+          number.classList.remove('hidden');
+          checkedRad(value);
+        } else {
+          number.classList.add('hidden');
+        }
+      }
+    });
+
+    if (btnNO !== 1 && btnNO >= curSlide) {
       if (value === btnNO + 1) {
         // console.log(number.dataset.num);
         number.classList.remove('hidden');
@@ -120,9 +132,8 @@ switcher.addEventListener('click', function () {
 
 // Responsiveness for switching radio wrt to their data
 toggleRadio.forEach(movs => movs.addEventListener('click', toggler));
-let curSlide = 0; // To keep the data of the slide
 
-// Next btn functionality
+// Event handlers for the buttons
 btnNxt.forEach(btn => btn.addEventListener('click', nxt));
 btnPrev.forEach(btn => btn.addEventListener('click', prev));
 btnConfirm.addEventListener('click', function () {
@@ -165,11 +176,10 @@ checkBox.forEach(cb =>
     adscontainer.forEach(as => {
       // console.log(link.value);
       // console.log(as.dataset.cb);
-      if (link.checked) {
-        if (+link.value === +as.dataset.cb) {
-          as.classList.add('active--sec3');
-        }
-      } else {
+      if (link.checked && +link.value === +as.dataset.cb) {
+        as.classList.add('active--sec3');
+        console.log(as);
+      } else if (!link.checked && +link.value === +as.dataset.cb) {
         console.log(link);
         as.classList.remove('active--sec3');
 
@@ -178,3 +188,5 @@ checkBox.forEach(cb =>
     });
   })
 );
+
+// section 4 begins

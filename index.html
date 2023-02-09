@@ -80,7 +80,7 @@
             <p class="mb-4 sub--text">
               Please provide your name, email address, and phone number.
             </p>
-            <form class="work--pls">
+            <form>
               <!-- name and input field -->
               <label for="name">Name</label>
               <input
@@ -121,7 +121,7 @@
               You have the option of monthly or yearly billing.
             </p>
             <div class="row plan--container my-4">
-              <div class="col-sm-3 option--plan mr-2">
+              <div class="col-sm-3 option--plan mr-2 active--sec2">
                 <img
                   src="/assets/images/icon-arcade.svg"
                   alt="Arcade"
@@ -234,40 +234,44 @@
             <p>Double-check everything looks OK before confirming.</p>
 
             <!-- Dynamically add subscription and add-on selections here -->
-            <div class="price--change split">
-              <p class="selection--plan">
-                Arcade(monthly) <br />
-                <a href="#">change</a>
-              </p>
 
-              <p class="price--tag">$9/mo</p>
+            <div class="sec--4--content">
+              <div class="price--change row pl-5 ml-4">
+                <p class="selection--plan">
+                  Arcade(monthly) <br />
+                  <a href="#">change</a>
+                </p>
+                <!-- <p class="col-2"></p> -->
+                <p class="price--tag col-5">$9/mo</p>
+              </div>
+
+              <!-- Review of adds ons -->
+              <div class="adds--on__change pl-5 ml-4">
+                <div class="service row">
+                  <p class="">Online service</p>
+                  <p class="col-5">+$1/mo</p>
+                </div>
+
+                <div class="storage row">
+                  <p class="">larger storage</p>
+                  <p class="col-5">+$2/mo</p>
+                </div>
+
+                <div class="profile row">
+                  <p class="">customizable profile</p>
+                  <p class="col-5">+$2/mo</p>
+                </div>
+              </div>
             </div>
-            <!-- Review of adds ons -->
-            <div class="adds--on__change">
-              <div class="service split">
-                <p>Online service</p>
-                <p>+$1/mo</p>
-              </div>
 
-              <div class="storage split">
-                <p>larger storage</p>
-                <p>+$2/mo</p>
-              </div>
+            <div class="summation split">
+              <p>Total (per month/year)</p>
+              <p>+12/mo</p>
+            </div>
 
-              <div class="profile split">
-                <p>customizable profile</p>
-                <p>+$2/mo</p>
-              </div>
-
-              <div class="summation split">
-                <p>Total (per month/year)</p>
-                <p>+12/mo</p>
-              </div>
-
-              <div class="btns">
-                <button class="prev btn--prev" data-prev="4">Go Back</button>
-                <button class="confirm">confirm</button>
-              </div>
+            <div class="btns">
+              <button class="prev btn--prev" data-prev="4">Go Back</button>
+              <button class="confirm">confirm</button>
             </div>
 
             <!-- Step 4 end -->

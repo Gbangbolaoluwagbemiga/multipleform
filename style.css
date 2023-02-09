@@ -30,6 +30,7 @@ body {
 /* General body */
 .contents {
   /* margin: auto; */
+  border-radius: 8px;
   padding: 30px;
   background-color: var(--Alabaster);
   cursor: pointer;
@@ -169,8 +170,16 @@ i {
 .add-ons__design {
   padding: 10px;
   margin: 8px;
-  border: 3px solid var(--input-nonselect);
+  border: 2px solid var(--input-nonselect);
   border-radius: 8px;
+}
+/* section 3 ends */
+
+/* section 4 begins */
+.sec--4--content {
+  border-radius: 6px;
+  border: 2px solid var(--input-nonselect);
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 750px) {
