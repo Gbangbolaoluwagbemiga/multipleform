@@ -14,6 +14,7 @@ const subSec4Text = document.querySelector('.sub__sec4--text');
 const subSec4Price = document.querySelector('.sub--price');
 const sec4Link = document.querySelector('.sec4--link');
 const sec2container = document.querySelector('.plan');
+const selectPeriod = document.querySelector('.period');
 
 // involves looping
 const toggleRadio = document.querySelectorAll('.toggler');
@@ -49,13 +50,6 @@ let secNo2 = 9;
 const addClasses = function () {
   radio.forEach(r => r.classList.add('hidden'));
 };
-
-sec4Link.addEventListener('click', function (e) {
-  e.preventDefault();
-  addClasses();
-  sec2container.classList.remove('hidden');
-  checkedRad(2);
-});
 
 // Default display that automatically get triggers the moment the website loads
 const defaultDisplay = function () {
@@ -152,6 +146,7 @@ switcher.addEventListener('click', function () {
   if (clicked) {
     toggOff.classList.add('hidden');
     toggOn.classList.remove('hidden');
+    selectPeriod.textContent = `per year`;
   } else {
     toggOff.classList.remove('hidden');
     toggOn.classList.add('hidden');
@@ -211,6 +206,9 @@ function optPlan(e) {
       secNo2 = +activeNo.dataset.price;
       // console.log(activeNo);
     }
+    everyNo = [secNo2, ...tired2];
+
+    Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`;
   });
 }
 planContainer.addEventListener('click', optPlan);
@@ -248,7 +246,7 @@ checkBox.forEach(cb =>
               }
               everyNo = [...number, secNo2, ...tired2];
 
-              Alltogether.textContent = `+${everyNo.reduce(myFunc)}/mo`;
+              Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`;
             }
             // });
           }
@@ -280,8 +278,8 @@ checkBox.forEach(cb =>
               }
               everyNo = [...number, secNo2, ...tired2];
               everyNo.length !== 0
-                ? (Alltogether.textContent = `+${everyNo.reduce(myFunc)}/mo`)
-                : (Alltogether.textContent = `+${0}/mo`);
+                ? (Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
+                : (Alltogether.textContent = `+$${0}/mo`);
             }
           }
         });
@@ -291,3 +289,13 @@ checkBox.forEach(cb =>
 );
 
 // section 4 begins
+sec4Link.addEventListener('click', function (e) {
+  e.preventDefault();
+  addClasses();
+  sec2container.classList.remove('hidden');
+  checkedRad(2);
+
+  everyNo = [...number, secNo2, ...tired2];
+
+  Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`;
+});

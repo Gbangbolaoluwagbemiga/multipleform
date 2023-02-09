@@ -187,7 +187,18 @@ i {
   padding-left: 30px;
   text-align: end;
 }
-
+.confirm {
+  background-color: var(--Purplish-blue);
+}
+.sum {
+  color: var(--Purplish-blue);
+  font-size: 15px;
+  font-weight: 600;
+}
+.appreciation,
+.img--appreciation {
+  text-align: center;
+}
 @media screen and (max-width: 750px) {
   .select--options {
     height: 47rem;
