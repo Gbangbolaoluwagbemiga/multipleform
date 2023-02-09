@@ -9,6 +9,9 @@ const appreciation = document.querySelector('.appreciation');
 const toggOff = document.querySelector('.fa-toggle-off');
 const toggOn = document.querySelector('.fa-toggle-on');
 const planContainer = document.querySelector('.plan--container');
+const Alltogether = document.querySelector('.sum');
+const subSec4Text = document.querySelector('.sub__sec4--text');
+const subSec4Price = document.querySelector('.sub--price');
 
 // involves looping
 const toggleRadio = document.querySelectorAll('.toggler');
@@ -20,6 +23,7 @@ const optionPlan = document.querySelectorAll('.option--plan');
 const checkBox = document.querySelectorAll('.checkbox');
 const adscontainer = document.querySelectorAll('.ads');
 const secView4 = document.querySelectorAll('.view');
+const priceNumber = document.querySelectorAll('.price--no');
 
 // General variable
 let done = false;
@@ -27,7 +31,13 @@ let clicked = true;
 let curSlide = 0; // To keep the data of the slide
 let btnClicked1 = false;
 
-///
+/////section 4 variable
+let number = 0;
+let added = [];
+let tired = [];
+let tired2 = [];
+let everyNo = [];
+
 // Helper functions
 
 // Add hidden classlist
@@ -62,7 +72,6 @@ const nxt = function (e) {
     const value = +number.dataset.num;
 
     formInput.forEach(id => {
-      console.log(id);
       if (btnNO === 1 && id.value !== '') {
         e.preventDefault();
         btnClicked1 = true;
@@ -119,6 +128,11 @@ const toggler = function (e) {
     }
   });
 };
+
+const myFunc = function (total, num) {
+  return total + num;
+};
+
 // End of helper functions
 // The switch toggler
 
@@ -173,36 +187,88 @@ function optPlan(e) {
 
   // Activate tab
   link.classList.add('active--sec2');
+  // section 4 in section 2
+  optionPlan.forEach(op => {
+    if (op.classList.contains('active--sec2')) {
+      const activeNo = op.querySelector('.light--text');
+      const activeText = op.querySelector('.bold--text');
+      console.log(activeText);
+      subSec4Text.textContent = activeText.textContent;
+      subSec4Price.textContent = `$${activeNo.dataset.price}/mo`;
+      // console.log(activeNo);
+    }
+  });
 }
 planContainer.addEventListener('click', optPlan);
+
 // section 2 ends
 
 // section 3
 checkBox.forEach(cb =>
   cb.addEventListener('click', function (e) {
     const link = e.target;
+    // console.log(link.value);
+
     adscontainer.forEach(as => {
-      // console.log(link.value);
-      // console.log(as.dataset.cb);
       if (link.checked && +link.value === +as.dataset.cb) {
         as.classList.add('active--sec3');
+
+        // section 4
+
         secView4.forEach(sect => {
           if (
             as.classList.contains('active--sec3') &&
             +sect.dataset.finish === +as.dataset.cb
           ) {
             sect.classList.remove('hidden');
-            // console.log(as);
+
+            // priceNumber.forEach(no => {
+            if (link.checked && !sect.classList.contains('hidden')) {
+              const selected = +sect.querySelector('.price--no').dataset.pn;
+              if (link.value <= 2) {
+                added.push(selected);
+                number = [...new Set(added)];
+              } else {
+                tired.push(2);
+                tired2 = [...new Set(tired)];
+              }
+              everyNo = [...number, ...tired2];
+
+              Alltogether.textContent = `+${everyNo.reduce(myFunc)}/mo`;
+            }
+            // });
           }
         });
       } else if (!link.checked && +link.value === +as.dataset.cb) {
         as.classList.remove('active--sec3');
+
+        // section 4
         secView4.forEach(sect => {
           if (
             !as.classList.contains('active--sec3') &&
             +sect.dataset.finish === +as.dataset.cb
           ) {
             sect.classList.add('hidden');
+
+            if (!link.checked && sect.classList.contains('hidden')) {
+              const selected = +sect.querySelector('.price--no').dataset.pn;
+              if (link.value <= 2) {
+                if (link.value === 1) {
+                  added.pop(selected);
+                  number = [...new Set(added)];
+                } else {
+                  added.shift();
+                  number = [...new Set(added)];
+                }
+              } else {
+                tired.pop(2);
+                tired2 = [...new Set(tired)];
+              }
+              everyNo = [...number, ...tired2];
+              everyNo.length !== 0
+                ? (Alltogether.textContent = `+${everyNo.reduce(myFunc)}/mo`)
+                : (Alltogether.textContent = `+${0}/mo`);
+            }
           }
         });
       }

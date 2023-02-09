@@ -182,7 +182,8 @@ i {
   border: 2px solid var(--input-nonselect);
   margin-bottom: 10px;
 }
-.price--no {
+.price--no,
+.sub--price {
   padding-left: 30px;
   text-align: end;
 }
