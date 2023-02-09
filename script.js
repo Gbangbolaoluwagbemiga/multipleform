@@ -24,6 +24,7 @@ const adscontainer = document.querySelectorAll('.ads');
 let done = false;
 let clicked = true;
 let curSlide = 0; // To keep the data of the slide
+let btnClicked1 = false;
 
 ///
 // Helper functions
@@ -63,6 +64,7 @@ const nxt = function (e) {
       console.log(id);
       if (btnNO === 1 && id.value !== '') {
         e.preventDefault();
+        btnClicked1 = true;
         if (value === btnNO + 1) {
           // console.log(number.dataset.num);
           number.classList.remove('hidden');
@@ -137,19 +139,24 @@ toggleRadio.forEach(movs => movs.addEventListener('click', toggler));
 btnNxt.forEach(btn => btn.addEventListener('click', nxt));
 btnPrev.forEach(btn => btn.addEventListener('click', prev));
 btnConfirm.addEventListener('click', function () {
-  radio.forEach(r => r.classList.add('hidden'));
-  appreciation.classList.remove('hidden');
-  addClasses();
-  toggleRadio.forEach(movs => movs.removeEventListener('click', toggler));
+  // guard clause to make sure section 1 is sorted out
+  if (btnClicked1) {
+    radio.forEach(r => r.classList.add('hidden'));
+    appreciation.classList.remove('hidden');
+    addClasses();
+    toggleRadio.forEach(movs => movs.removeEventListener('click', toggler));
 
-  done = true;
-  // After confirm is trigged
-  if (done) {
-    toggleRadio.forEach(tr => {
-      tr.name = '';
-      tr.checked = true;
-    });
-    // toggleRadio.forEach(movs => movs.remove('click', toggler));
+    done = true;
+    // After confirm is trigged
+    if (done) {
+      toggleRadio.forEach(tr => {
+        tr.name = '';
+        tr.checked = true;
+      });
+      // toggleRadio.forEach(movs => movs.remove('click', toggler));
+    }
+  } else {
+    alert('Section 1 details not filled yet');
   }
 });
 
