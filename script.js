@@ -12,6 +12,8 @@ const planContainer = document.querySelector('.plan--container');
 const Alltogether = document.querySelector('.sum');
 const subSec4Text = document.querySelector('.sub__sec4--text');
 const subSec4Price = document.querySelector('.sub--price');
+const sec4Link = document.querySelector('.sec4--link');
+const sec2container = document.querySelector('.plan');
 
 // involves looping
 const toggleRadio = document.querySelectorAll('.toggler');
@@ -31,12 +33,15 @@ let clicked = true;
 let curSlide = 0; // To keep the data of the slide
 let btnClicked1 = false;
 
-/////section 4 variable
+/////section 4 in section 3 variable
 let number = 0;
 let added = [];
 let tired = [];
 let tired2 = [];
 let everyNo = [];
+
+// section 4 in section 2 variable
+let secNo2 = 9;
 
 // Helper functions
 
@@ -44,6 +49,13 @@ let everyNo = [];
 const addClasses = function () {
   radio.forEach(r => r.classList.add('hidden'));
 };
+
+sec4Link.addEventListener('click', function (e) {
+  e.preventDefault();
+  addClasses();
+  sec2container.classList.remove('hidden');
+  checkedRad(2);
+});
 
 // Default display that automatically get triggers the moment the website loads
 const defaultDisplay = function () {
@@ -195,6 +207,8 @@ function optPlan(e) {
       console.log(activeText);
       subSec4Text.textContent = activeText.textContent;
       subSec4Price.textContent = `$${activeNo.dataset.price}/mo`;
+
+      secNo2 = +activeNo.dataset.price;
       // console.log(activeNo);
     }
   });
@@ -232,7 +246,7 @@ checkBox.forEach(cb =>
                 tired.push(2);
                 tired2 = [...new Set(tired)];
               }
-              everyNo = [...number, ...tired2];
+              everyNo = [...number, secNo2, ...tired2];
 
               Alltogether.textContent = `+${everyNo.reduce(myFunc)}/mo`;
             }
@@ -264,7 +278,7 @@ checkBox.forEach(cb =>
                 tired.pop(2);
                 tired2 = [...new Set(tired)];
               }
-              everyNo = [...number, ...tired2];
+              everyNo = [...number, secNo2, ...tired2];
               everyNo.length !== 0
                 ? (Alltogether.textContent = `+${everyNo.reduce(myFunc)}/mo`)
                 : (Alltogether.textContent = `+${0}/mo`);
