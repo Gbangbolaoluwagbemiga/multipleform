@@ -27,6 +27,8 @@ const checkBox = document.querySelectorAll('.checkbox');
 const adscontainer = document.querySelectorAll('.ads');
 const secView4 = document.querySelectorAll('.view');
 const priceNumber = document.querySelectorAll('.price--no');
+const perMonth = document.querySelectorAll('.monthly');
+const perYear = document.querySelectorAll('.yearly');
 
 // General variable
 let done = false;
@@ -146,8 +148,12 @@ switcher.addEventListener('click', function () {
   if (clicked) {
     toggOff.classList.add('hidden');
     toggOn.classList.remove('hidden');
+    perYear.forEach(py => py.classList.remove('hidden'));
+    perMonth.forEach(pm => pm.classList.add('hidden'));
     selectPeriod.textContent = `per year`;
   } else {
+    perYear.forEach(py => py.classList.add('hidden'));
+    perMonth.forEach(pm => pm.classList.remove('hidden'));
     toggOff.classList.remove('hidden');
     toggOn.classList.add('hidden');
   }
@@ -194,10 +200,12 @@ function optPlan(e) {
 
   // Activate tab
   link.classList.add('active--sec2');
+
   // section 4 in section 2
   optionPlan.forEach(op => {
     if (op.classList.contains('active--sec2')) {
       const activeNo = op.querySelector('.light--text');
+      console.log(activeNo);
       const activeText = op.querySelector('.bold--text');
       console.log(activeText);
       subSec4Text.textContent = activeText.textContent;
