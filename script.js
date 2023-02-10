@@ -28,6 +28,8 @@ const adscontainer = document.querySelectorAll('.ads');
 const secView4 = document.querySelectorAll('.view');
 const priceNumber = document.querySelectorAll('.price--no');
 const perMonth = document.querySelectorAll('.monthly');
+const planPerMonth = document.querySelectorAll('.monthly--plan');
+const planPerYear = document.querySelectorAll('.yearly--plan');
 const perYear = document.querySelectorAll('.yearly');
 
 // General variable
@@ -161,6 +163,17 @@ switcher.addEventListener('click', function (e) {
     toggOn.classList.add('hidden');
     optionPlan.forEach(t => t.classList.remove('active--sec2'));
   }
+
+  if (!toggOn.classList.contains('hidden')) {
+    planPerMonth.forEach(ppm => ppm.classList.add('hidden'));
+    planPerYear.forEach(ppy => ppy.classList.remove('hidden'));
+    console.log(clicked);
+  } else {
+    planPerMonth.forEach(ppm => ppm.classList.remove('hidden'));
+    planPerYear.forEach(ppy => ppy.classList.add('hidden'));
+    console.log(clicked);
+  }
+
   clicked = !clicked;
 });
 
@@ -206,6 +219,7 @@ function optPlan(e) {
   link.classList.add('active--sec2');
 
   // section 4 in section 2
+
   optionPlan.forEach(op => {
     if (op.classList.contains('active--sec2')) {
       const activeMo = op.querySelector('.monthly');
