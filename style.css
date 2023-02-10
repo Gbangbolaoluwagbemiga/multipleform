@@ -32,7 +32,8 @@ body {
 /* General body */
 .contents {
   margin: auto;
-  width: 70%;
+  margin-top: 40%;
+  width: 80%;
   border-radius: 8px;
   padding: 30px;
   background-color: var(--Alabaster);

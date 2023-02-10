@@ -141,21 +141,25 @@ const myFunc = function (total, num) {
   return total + num;
 };
 
+///////////
+
 // End of helper functions
 // The switch toggler
 
-switcher.addEventListener('click', function () {
+switcher.addEventListener('click', function (e) {
   if (clicked) {
     toggOff.classList.add('hidden');
     toggOn.classList.remove('hidden');
     perYear.forEach(py => py.classList.remove('hidden'));
     perMonth.forEach(pm => pm.classList.add('hidden'));
     selectPeriod.textContent = `per year`;
+    optionPlan.forEach(t => t.classList.remove('active--sec2'));
   } else {
     perYear.forEach(py => py.classList.add('hidden'));
     perMonth.forEach(pm => pm.classList.remove('hidden'));
     toggOff.classList.remove('hidden');
     toggOn.classList.add('hidden');
+    optionPlan.forEach(t => t.classList.remove('active--sec2'));
   }
   clicked = !clicked;
 });
@@ -204,14 +208,27 @@ function optPlan(e) {
   // section 4 in section 2
   optionPlan.forEach(op => {
     if (op.classList.contains('active--sec2')) {
-      const activeNo = op.querySelector('.light--text');
-      console.log(activeNo);
+      const activeMo = op.querySelector('.monthly');
+      const activeYr = op.querySelector('.yearly');
+      let period = '';
+
+      if (toggOn.classList.contains('hidden')) {
+        activeYr.classList.contains('hidden')
+          ? (period = activeMo.dataset.price)
+          : (period = activeYr.dataset.period);
+      } else {
+        !activeYr.classList.contains('hidden')
+          ? (period = activeYr.dataset.price)
+          : (period = activeMo.dataset.period);
+      }
+
+      console.log(period);
       const activeText = op.querySelector('.bold--text');
       console.log(activeText);
       subSec4Text.textContent = activeText.textContent;
-      subSec4Price.textContent = `$${activeNo.dataset.price}/mo`;
+      subSec4Price.textContent = `$${period}/mo`;
 
-      secNo2 = +activeNo.dataset.price;
+      secNo2 = +period;
       // console.log(activeNo);
     }
     everyNo = [secNo2, ...tired2];
