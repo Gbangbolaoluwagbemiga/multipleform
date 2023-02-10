@@ -13,6 +13,7 @@
   --Cool-gray: hsl(231, 11%, 63%);
   --Light-gray: hsl(229, 24%, 87%);
   --Magnolia: hsl(217, 100%, 97%);
+  --no-dispaly: none;
 }
 
 /* General body styling */
@@ -30,7 +31,8 @@ body {
 }
 /* General body */
 .contents {
-  /* margin: auto; */
+  margin: auto;
+  width: 70%;
   border-radius: 8px;
   padding: 30px;
   background-color: var(--Alabaster);
@@ -203,19 +205,54 @@ i {
 .img--appreciation {
   width: 20%;
 }
+.attribution {
+  text-align: center;
+}
 @media screen and (max-width: 750px) {
-  .select--options {
-    height: 47rem;
-    background-image: url(/assets/images/bg-sidebar-desktop.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: contain;
+  .contents {
+    width: 100%;
+    background-color: var(--no-dispaly);
   }
 
+  .select--options {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    height: 12rem;
+    background-image: url(/assets/images/bg-sidebar-mobile.svg);
+    background-size: cover;
+  }
+  .container {
+    margin: 0;
+  }
+  .toggler {
+    margin: 10px;
+  }
+  .options--details {
+    position: absolute;
+    top: 8%;
+    right: 10%;
+    left: 5%;
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+    padding: 25px;
+    background-color: var(--Alabaster);
+    z-index: 1;
+  }
+  .ls--word {
+    display: none;
+  }
   .option--basis {
     padding: 5px 3px;
     padding-left: 0;
     width: 95%;
+  }
+  .btn {
+    left: 70%;
   }
 
   .form--input {
@@ -226,6 +263,11 @@ i {
   }
 
   .price {
-    right: 10px;
+    text-align: left;
+    right: 20px;
+  }
+  .attribution {
+    position: absolute;
+    bottom: 10px;
   }
 }
