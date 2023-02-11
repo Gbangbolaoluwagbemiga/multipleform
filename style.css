@@ -272,3 +272,10 @@ i {
     bottom: 10px;
   }
 }
+
+/* user profile */
+.user__profile:hover {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--Light-gray);
+}
