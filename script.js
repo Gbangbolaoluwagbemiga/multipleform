@@ -9,9 +9,7 @@ const appreciation = document.querySelector('.appreciation');
 const toggOff = document.querySelector('.fa-toggle-off');
 const toggOn = document.querySelector('.fa-toggle-on');
 const planContainer = document.querySelector('.plan--container');
-const Alltogether = document.querySelector('.sum');
 const subSec4Text = document.querySelector('.sub__sec4--text');
-const subSec4Price = document.querySelector('.sub--price');
 const sec4Link = document.querySelector('.sec4--link');
 const sec2container = document.querySelector('.plan');
 const selectPeriod = document.querySelector('.period');
@@ -30,6 +28,8 @@ const priceNumber = document.querySelectorAll('.price--no');
 const perMonth = document.querySelectorAll('.monthly');
 const planPerMonth = document.querySelectorAll('.monthly--plan');
 const planPerYear = document.querySelectorAll('.yearly--plan');
+const Alltogether = document.querySelectorAll('.sum');
+const subSec4Price = document.querySelectorAll('.sub--price');
 const perYear = document.querySelectorAll('.yearly');
 
 // General variable
@@ -69,6 +69,7 @@ function checkedRad(numrad) {
     const check = numrad;
     const val = +tr.value;
     if (val === check) {
+      // console.log('val');
       tr.checked = true;
     }
   });
@@ -85,7 +86,7 @@ const nxt = function (e) {
         e.preventDefault();
         btnClicked1 = true;
         if (value === btnNO + 1) {
-          console.log(number.dataset.num);
+          // console.log(number.dataset.num);
           number.classList.remove('hidden');
           checkedRad(value);
         } else {
@@ -96,7 +97,7 @@ const nxt = function (e) {
 
     if (btnNO !== 1 && btnNO >= curSlide) {
       if (value === btnNO + 1) {
-        console.log(number.dataset.num);
+        // console.log(number.dataset.num);
         number.classList.remove('hidden');
         checkedRad(value);
       } else {
@@ -115,7 +116,7 @@ const prev = function (e) {
     const value = +number.dataset.num;
     if (btnNO >= curSlide) {
       if (value + 1 === btnNO) {
-        console.log(btnNO);
+        // console.log(btnNO);
         number.classList.remove('hidden');
         checkedRad(btnNO - 1);
       } else {
@@ -129,7 +130,7 @@ const prev = function (e) {
 const toggler = function (e) {
   addClasses();
   const individual = e.target.value;
-  console.log(e.target.checked);
+  // console.log(e.target.checked);
   radio.forEach(number => {
     const value = number.dataset.num;
     if (individual === value) {
@@ -166,11 +167,11 @@ switcher.addEventListener('click', function (e) {
   if (!toggOn.classList.contains('hidden')) {
     planPerMonth.forEach(ppm => ppm.classList.add('hidden'));
     planPerYear.forEach(ppy => ppy.classList.remove('hidden'));
-    // console.log(clicked);
+    console.log(clicked);
   } else {
     planPerMonth.forEach(ppm => ppm.classList.remove('hidden'));
     planPerYear.forEach(ppy => ppy.classList.add('hidden'));
-    // console.log(clicked);
+    console.log(clicked);
   }
 
   clicked = !clicked;
@@ -207,7 +208,7 @@ btnConfirm.addEventListener('click', function () {
 // section 2 responsiveness
 function optPlan(e) {
   const link = e.target.closest('.option--plan');
-  console.log(link);
+  // console.log(link);
   // Guard clause
   if (!link) return;
 
@@ -235,14 +236,18 @@ function optPlan(e) {
           : (period = activeMo.dataset.period);
       }
 
-      // console.log(period);
+      console.log(period);
       const activeText = op.querySelector('.bold--text');
-      // console.log(activeText);
+      console.log(activeText);
       subSec4Text.textContent = activeText.textContent;
-      subSec4Price.textContent = `$${period}/mo`;
+      subSec4Price.forEach(ssp => {
+        clicked
+          ? (ssp.textContent = `$${period}/mo`)
+          : (ssp.textContent = `$${period}/yr`);
+      });
 
       secNo2 = +period;
-      console.log(activeNo);
+      // console.log(activeNo);
     }
     everyNo = [secNo2, ...tired2];
 
@@ -257,22 +262,27 @@ planContainer.addEventListener('click', optPlan);
 checkBox.forEach(cb =>
   cb.addEventListener('click', function (e) {
     const link = e.target;
+    let selected = 0;
 
     adscontainer.forEach(as => {
       if (link.checked && +link.value === +as.dataset.cb) {
+        // console.log(+link.value);
+        // console.log(+as.dataset.cb);
         as.classList.add('active--sec3'); //this is to add active class
+        // console.log(as);
+        // section 4
 
         secView4.forEach(sect => {
-          // console.log(sect);
+          console.log(sect);
           if (
             as.classList.contains('active--sec3') &&
             +sect.dataset.finish === +as.dataset.cb
           ) {
             sect.classList.remove('hidden');
 
+            // priceNumber.forEach(no => {
             if (link.checked && !sect.classList.contains('hidden')) {
               planPerMonth.forEach(ppm => {});
-              let selected = 0;
               clicked
                 ? (selected = +sect.querySelector('.monthly--plan').dataset.pn)
                 : (selected = +sect.querySelector('.yearly--plan').dataset.pn);
@@ -285,14 +295,20 @@ checkBox.forEach(cb =>
                 tired2 = [...new Set(tired)];
               }
               everyNo = [...number, secNo2, ...tired2];
-
-              Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`;
+              Alltogether.forEach(at => {
+                Alltogether.forEach(at => {
+                  clicked
+                    ? (at.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
+                    : (at.textContent = `+$${everyNo.reduce(myFunc)}/yr`);
+                });
+              });
             }
+            // });
           }
         });
       } else if (!link.checked && +link.value === +as.dataset.cb) {
         as.classList.remove('active--sec3');
-        // console.log();
+
         // section 4
         secView4.forEach(sect => {
           if (
@@ -302,7 +318,9 @@ checkBox.forEach(cb =>
             sect.classList.add('hidden');
 
             if (!link.checked && sect.classList.contains('hidden')) {
-              const selected = +sect.querySelector('.price--no').dataset.pn;
+              clicked
+                ? (selected = +sect.querySelector('.monthly--plan').dataset.pn)
+                : (selected = +sect.querySelector('.yearly--plan').dataset.pn);
               if (link.value <= 2) {
                 if (link.value === 1) {
                   added.pop(selected);
@@ -316,9 +334,17 @@ checkBox.forEach(cb =>
                 tired2 = [...new Set(tired)];
               }
               everyNo = [...number, secNo2, ...tired2];
-              everyNo.length !== 0
-                ? (Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
-                : (Alltogether.textContent = `+$${0}/mo`);
+              Alltogether.forEach(at => {
+                if (everyNo.length !== 0) {
+                  clicked
+                    ? (at.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
+                    : (at.textContent = `+$${everyNo.reduce(myFunc)}/yr`);
+                } else {
+                  clicked
+                    ? (at.textContent = `+$${0}/mo`)
+                    : (at.textContent = `+$${0}/yr`);
+                }
+              });
             }
           }
         });
@@ -336,5 +362,9 @@ sec4Link.addEventListener('click', function (e) {
 
   everyNo = [...number, secNo2, ...tired2];
 
-  Alltogether.textContent = `+$${everyNo.reduce(myFunc)}/mo`;
+  Alltogether.forEach(at => {
+    clicked
+      ? (at.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
+      : (at.textContent = `+$${everyNo.reduce(myFunc)}/yr`);
+  });
 });
