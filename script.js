@@ -149,6 +149,12 @@ const myFunc = function (total, num) {
 // The switch toggler
 
 switcher.addEventListener('click', function (e) {
+  adscontainer.forEach(as => as.classList.remove('active--sec3'));
+  checkBox.forEach(cb => (cb.checked = false));
+  number = 0;
+  tired = 0;
+  added = [];
+  everyNo = [];
   if (clicked) {
     toggOff.classList.add('hidden');
     toggOn.classList.remove('hidden');
@@ -208,7 +214,6 @@ btnConfirm.addEventListener('click', function () {
 // section 2 responsiveness
 function optPlan(e) {
   const link = e.target.closest('.option--plan');
-  // console.log(link);
   // Guard clause
   if (!link) return;
 
@@ -247,7 +252,6 @@ function optPlan(e) {
       });
 
       secNo2 = +period;
-      // console.log(activeNo);
     }
     everyNo = [secNo2, ...tired2];
 
@@ -266,36 +270,24 @@ checkBox.forEach(cb =>
 
     adscontainer.forEach(as => {
       if (link.checked && +link.value === +as.dataset.cb) {
-        // console.log(+link.value);
-        // console.log(+as.dataset.cb);
-        as.classList.add('active--sec3'); //this is to add active class
-        // console.log(as);
         // section 4
+        as.classList.add('active--sec3'); //this is to add active class
 
         secView4.forEach(sect => {
-          console.log(sect);
           if (
             as.classList.contains('active--sec3') &&
             +sect.dataset.finish === +as.dataset.cb
           ) {
             sect.classList.remove('hidden');
 
-            // priceNumber.forEach(no => {
             if (link.checked && !sect.classList.contains('hidden')) {
               planPerMonth.forEach(ppm => {});
               clicked
                 ? (selected = +sect.querySelector('.monthly--plan').dataset.pn)
                 : (selected = +sect.querySelector('.yearly--plan').dataset.pn);
 
-              // if (link.value <= 2) {
-              //   added.push(selected);
-              //   number = [...new Set(added)];
-              // } else {
-              //   tired.push(2);
-              //   tired2 = [...new Set(tired)];
-              // }
-
-              if (link.value === 3) {
+              if (+link.value === 3) {
+                console.log(link.value);
                 clicked ? (tired = 2) : (tired = 20);
               } else {
                 added.push(selected);
@@ -311,13 +303,12 @@ checkBox.forEach(cb =>
                 });
               });
             }
-            // });
           }
         });
       } else if (!link.checked && +link.value === +as.dataset.cb) {
         as.classList.remove('active--sec3');
 
-        // section 4
+        // section 4 else aspect
         secView4.forEach(sect => {
           if (
             !as.classList.contains('active--sec3') &&
@@ -334,11 +325,11 @@ checkBox.forEach(cb =>
                   added.pop(selected);
                   number = [...new Set(added)];
                 } else {
-                  added.shift(1);
-                  number = [...new Set(added)];
+                  clicked && !link.checked ? (tired = -2) : (tired = -20);
                 }
               } else {
-                clicked ? (tired = -20) : (tired = -2);
+                console.log(link.checked);
+                clicked && !link.checked ? (tired = -2) : (tired = -20);
               }
 
               everyNo = [...number, secNo2, tired];
@@ -361,7 +352,7 @@ checkBox.forEach(cb =>
   })
 );
 
-// section 4 begins
+// section 4, the link part
 sec4Link.addEventListener('click', function (e) {
   e.preventDefault();
   addClasses();
