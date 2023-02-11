@@ -33,7 +33,7 @@ body {
 .contents {
   margin: auto;
   margin-top: 40%;
-  width: 80%;
+  width: 90%;
   border-radius: 8px;
   padding: 30px;
   background-color: var(--Alabaster);
@@ -270,5 +270,8 @@ i {
   .attribution {
     position: absolute;
     bottom: 10px;
+  }
+  .option--plan {
+    display: block;
   }
 }
