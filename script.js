@@ -287,14 +287,22 @@ checkBox.forEach(cb =>
                 ? (selected = +sect.querySelector('.monthly--plan').dataset.pn)
                 : (selected = +sect.querySelector('.yearly--plan').dataset.pn);
 
-              if (link.value <= 2) {
+              // if (link.value <= 2) {
+              //   added.push(selected);
+              //   number = [...new Set(added)];
+              // } else {
+              //   tired.push(2);
+              //   tired2 = [...new Set(tired)];
+              // }
+
+              if (link.value === 3) {
+                clicked ? (tired = 2) : (tired = 20);
+              } else {
                 added.push(selected);
                 number = [...new Set(added)];
-              } else {
-                tired.push(2);
-                tired2 = [...new Set(tired)];
               }
-              everyNo = [...number, secNo2, ...tired2];
+
+              everyNo = [...number, secNo2, tired];
               Alltogether.forEach(at => {
                 Alltogether.forEach(at => {
                   clicked
@@ -326,14 +334,14 @@ checkBox.forEach(cb =>
                   added.pop(selected);
                   number = [...new Set(added)];
                 } else {
-                  added.shift();
+                  added.shift(1);
                   number = [...new Set(added)];
                 }
               } else {
-                tired.pop(2);
-                tired2 = [...new Set(tired)];
+                clicked ? (tired = -20) : (tired = -2);
               }
-              everyNo = [...number, secNo2, ...tired2];
+
+              everyNo = [...number, secNo2, tired];
               Alltogether.forEach(at => {
                 if (everyNo.length !== 0) {
                   clicked
@@ -359,12 +367,13 @@ sec4Link.addEventListener('click', function (e) {
   addClasses();
   sec2container.classList.remove('hidden');
   checkedRad(2);
+  if (number !== 0) {
+    everyNo = [...number, secNo2, tired];
 
-  everyNo = [...number, secNo2, ...tired2];
-
-  Alltogether.forEach(at => {
-    clicked
-      ? (at.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
-      : (at.textContent = `+$${everyNo.reduce(myFunc)}/yr`);
-  });
+    Alltogether.forEach(at => {
+      clicked
+        ? (at.textContent = `+$${everyNo.reduce(myFunc)}/mo`)
+        : (at.textContent = `+$${everyNo.reduce(myFunc)}/yr`);
+    });
+  }
 });
