@@ -13,13 +13,15 @@ const subSec4Text = document.querySelector('.sub__sec4--text');
 const sec4Link = document.querySelector('.sec4--link');
 const sec2container = document.querySelector('.plan');
 const selectPeriod = document.querySelector('.period');
+const inputName = document.querySelector('.form--input__name');
+const inputEmail = document.querySelector('.form--input__email');
+const inputNo = document.querySelector('.form--input__no');
 
 // involves looping
 const toggleRadio = document.querySelectorAll('.toggler');
 const radio = document.querySelectorAll('.radio');
 const btnNxt = document.querySelectorAll('.btn--nxt');
 const btnPrev = document.querySelectorAll('.btn--prev');
-const formInput = document.querySelectorAll('.form--input');
 const optionPlan = document.querySelectorAll('.option--plan');
 const checkBox = document.querySelectorAll('.checkbox');
 const adscontainer = document.querySelectorAll('.ads');
@@ -81,19 +83,21 @@ const nxt = function (e) {
   radio.forEach(number => {
     const value = +number.dataset.num;
 
-    formInput.forEach(id => {
-      if (btnNO === 1 && id.value !== '') {
-        e.preventDefault();
-        btnClicked1 = true;
-        if (value === btnNO + 1) {
-          // console.log(number.dataset.num);
-          number.classList.remove('hidden');
-          checkedRad(value);
-        } else {
-          number.classList.add('hidden');
-        }
+    if (
+      btnNO === 1 &&
+      inputName.value !== '' &&
+      inputEmail.value !== '' &&
+      inputNo.value !== ''
+    ) {
+      e.preventDefault();
+      btnClicked1 = true;
+      if (value === btnNO + 1) {
+        number.classList.remove('hidden');
+        checkedRad(value);
+      } else {
+        number.classList.add('hidden');
       }
-    });
+    }
 
     if (btnNO !== 1 && btnNO >= curSlide) {
       if (value === btnNO + 1) {
@@ -329,7 +333,7 @@ checkBox.forEach(cb =>
                 }
               } else {
                 console.log(link.checked);
-                clicked && !link.checked ? (tired = -2) : (tired = -20);
+                // clicked && !link.checked ? (tired = -2) : (tired = -20);
               }
 
               everyNo = [...number, secNo2, tired];
